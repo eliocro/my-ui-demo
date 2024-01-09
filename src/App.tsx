@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import { Button, RadioGroup, Switch } from '@eliocro/my-ui';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [active, setActive] = useState(false);
+  const [mode, setMode] = useState('light');
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>My-UI Components Demo</h1>
+      <Button onClick={() => window.alert('Hello World!')}>
+        This is a button
+      </Button>
+      <Switch
+        name="active"
+        label="Device active"
+        checked={active}
+        onChange={setActive}
+      />
+      <RadioGroup
+        name="mode"
+        label="Mode"
+        options={RADIO_OPTIONS}
+        value={mode}
+        onChange={setMode}
+      />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
+
+const RADIO_OPTIONS = [
+  { label: 'Light', value: 'light' },
+  { label: 'Dark', value: 'dark' },
+];
